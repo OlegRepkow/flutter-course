@@ -1,0 +1,39 @@
+{
+    "name": "John",
+    "lastName": "Doe",
+    "age": 30,
+    "email": "john.doe@example.com",
+    "isVerified": false,
+    "phone": null,
+    "finishedCourses": [
+        {
+            "name": "Flutter Fundamentals",
+            "result": {
+                "score": 32,
+                "certificate": "https://flutter.dev/certificate.pdf",
+                "certificateType": "pdf",
+                "finishedAt": "2025-01-01T00:00:00Z"
+            }
+        },
+        {
+            "name": "Advanced Flutter Development",
+            "result": {
+                "score": 44,
+                "certificate": "https://flutter.dev/certificate.pdf",
+                "certificateType": "pdf",
+                "finishedAt": "2025-01-01T00:00:00Z"
+            }
+        },
+        {
+            "name": "UI/UX Design",
+            "result": {
+                "score": 22,
+                "certificate": "https://flutter.dev/certificate.pdf",
+                "certificateType": "pdf",
+                "finishedAt": "2025-01-01T00:00:00Z"
+            }
+        }
+    ],
+    "createdAt": "2025-01-01T00:00:00Z",
+    "updatedAt": "2025-01-01T00:00:00Z"
+}
