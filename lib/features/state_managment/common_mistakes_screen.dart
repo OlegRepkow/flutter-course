@@ -28,10 +28,10 @@ class CommonMistakesScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
 
-                // TODO(p.avdonin): Ось тут не має доступу до state SimpleCubitExample
-                // Розкоментуйте, щоб побачити помилку
-                // Зверніть увагу на контекст, який використовується
-
+                // Доступ до bloc/cubit через `context.read` працює лише нижче
+                // того BlocProvider, який його створив. Тут провайдер — цей
+                // самий віджет, тому create-контекст його ще не бачить.
+                // Розкоментований рядок нижче кине помилку ProviderNotFound:
                 // Text(
                 //   'Current State number - ${context.read<SimpleCubitExample>().state}',
                 // ),
@@ -43,7 +43,6 @@ class CommonMistakesScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
 
-                //Переробити на go_router
                 ElevatedButton(
                   onPressed: () => Navigator.push(
                     context,
@@ -104,8 +103,10 @@ class SimpleExamplePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // TODO(p.avdonin): Ось тут не має доступу до state SimpleCubitExample
-            // Розкоментуйте, щоб побачити помилку
+            // Ця сторінка — окремий маршрут, тому вона НЕ всередині
+            // BlocProvider, створеного на попередньому екрані. Читання cubit
+            // тут кине помилку ProviderNotFound — bloc треба надавати вище
+            // кожного маршруту, якому він потрібен (або надавати глобально).
             const Text(
               'Current State number ',
             ),

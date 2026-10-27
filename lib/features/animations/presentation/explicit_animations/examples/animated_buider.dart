@@ -2,11 +2,12 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-// Розказати, що таке AnimatedBuilder
-// Розказати про те, як змінюється значення (+значення Animation Controller)
-// Додати Curve
-// Розказати про Tween Sequance
-
+/// Приклад явної (explicit) анімації на основі [AnimatedBuilder].
+///
+/// Один [AnimationController] одночасно керує кількома [Tween]ами (розмір,
+/// колір, поворот, вирівнювання, скруглення кутів). [AnimatedBuilder] на
+/// кожному кадрі перебудовує лише свій builder, а не все дерево віджетів,
+/// тому анімація лишається дешевою навіть із багатьма властивостями.
 class AnimatedBuilderExample extends StatefulWidget {
   const AnimatedBuilderExample({super.key});
 
@@ -46,17 +47,6 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ).animate(_controller);
-
-    // _alignmentAnimation =
-    //     AlignmentTween(begin: Alignment.centerLeft,
-    // end: Alignment.centerRight)
-    //         .animate(
-    //   CurvedAnimation(
-    //     parent: _controller,
-    //     curve: Curves.easeInOutCubicEmphasized,
-    //     reverseCurve: Curves.easeInCubic,
-    //   ),
-    // );
 
     _borderRadiusAnimation = BorderRadiusTween(
       begin: BorderRadius.circular(0.0),

@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Lab'),
+        title: const Text('Flutter Playground'),
         backgroundColor: Colors.blue.shade100,
         leading: IconButton(
           onPressed: () => _showDialog(context),

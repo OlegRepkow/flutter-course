@@ -2,11 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-// Показати зміну значення _controller.value в консолі
-// Показати зміну значення _counter в консолі, чому саме така кількість
-// TickerProviderStateMixin та SingleTickerProviderStateMixin
-// setState()
-
+/// Базовий приклад [AnimationController].
+///
+/// Контролер генерує значення в діапазоні 0..1 протягом заданого `duration`
+/// і керується `vsync`-тікером, тому стан підмішує
+/// [SingleTickerProviderStateMixin].
+/// `addListener` викликається на кожному кадрі анімації — тут у консоль
+/// виводяться поточне `_controller.value` та лічильник кадрів `_counter`
+/// (їхня кількість залежить від частоти оновлення екрана та тривалості
+/// анімації). `forward()` запускає анімацію вперед.
 class AnimationControllerExample extends StatefulWidget {
   const AnimationControllerExample({super.key});
 

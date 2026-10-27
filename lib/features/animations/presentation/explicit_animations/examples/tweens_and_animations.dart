@@ -1,7 +1,15 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 
+/// Основи явної (explicit) анімації: [AnimationController], [Animation]
+/// та [Tween].
+///
+/// - [AnimationController] генерує значення в діапазоні 0..1 протягом
+///   `duration` і керується `vsync`-тікером (звідси й міксин тікер-провайдера).
+/// - [Tween] відображає цей діапазон 0..1 на корисний (тут 100 -> 200).
+/// - `.animate(controller)` поєднує їх в [Animation], яку можна читати.
+/// - `addListener` спрацьовує на кожну зміну значення (виклич setState або
+///   перебудуй віджет, щоб показати її на екрані); `addStatusListener`
+///   спрацьовує на зміну стану: forward / completed / dismissed.
 class TweenAndAnimationExample extends StatefulWidget {
   const TweenAndAnimationExample({super.key});
 
@@ -10,16 +18,10 @@ class TweenAndAnimationExample extends StatefulWidget {
       _TweenAndAnimationExampleState();
 }
 
-// Розказати про відмінність AnimationController та Animation та Tween
-// Розказати про addListener та addStatusListener
-// Розказати про створення Animation
-
 class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _animation;
-
-  //final int _counter = 0;
 
   @override
   void initState() {
@@ -32,13 +34,12 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
 
     _animation = Tween<double>(begin: 100, end: 200).animate(_controller)
       ..addListener(() {
-        // print('tick: $_counter');
-        // print('animation.value: ${_animation.value}');
-        // _counter++;
-        //setState(() {});
+        // Перебудовуємо на кожному кадрі, щоб Text нижче показував
+        // поточне значення.
+        setState(() {});
       })
       ..addStatusListener((status) {
-        //print('status: $status');
+        // Спрацьовує на зміни AnimationStatus: forward, completed, dismissed...
       });
 
     _controller.forward();

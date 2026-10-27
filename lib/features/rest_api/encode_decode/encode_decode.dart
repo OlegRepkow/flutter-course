@@ -1,19 +1,20 @@
-// ignore_for_file: avoid_print - it's ok for this file
-// ignore_for_file: omit_local_variable_types  - need to show that json
-// is just string
+// ignore_for_file: avoid_print - для цього файлу це нормально
+// ignore_for_file: omit_local_variable_types - лишаємо явні типи, щоб сирий
+// JSON-рядок візуально відрізнявся від розпарсеного Map
 
-// Початкова структура
-// Чому ми вказуємо тип Map<String, dynamic> ?
-// Чи можна працювати з Map у Flutter проєкті і як це виглядає?
-// Базова конвертація Map<String, dynamic> у обʼєкт класу (DTO - що це таке?)
-// Покращення конвертації Map<String, dynamic> у обʼєкт класу
-// Автоматизація конвертації за допомогою jsonSerializable
-// Прискорення формування DTO класу за допомогою онлайн сервісів (наприклад https://dart-quicktype.netlify.app/)
-// Прискорення формування DTO класу за допомогою VSCode розширення (наприклад https://marketplace.visualstudio.com/items?itemName=hirantha.json-to-dart)
-// Чи  можна DTO клас використовувати у UI?
-// Що таке Entity клас і для чого він потрібен.
-
-// Encode - навіщо він потрібен? Приклад з кешуванням.
+/// Покроковий розбір серіалізації JSON.
+///
+/// Показаний тут потік: сирий JSON-рядок -> `jsonDecode` -> динамічний
+/// `Map<String, dynamic>` -> типізований [PersonDto] (data transfer object,
+/// що повторює форму відповіді API) -> [PersonEntity] (доменна модель, яку
+/// насправді використовує UI). Розділення DTO та Entity ізолює застосунок
+/// від змін в API.
+///
+/// DTO-класи можна писати вручну, генерувати через `json_serializable` або
+/// формувати зі зразка JSON за допомогою інструментів на кшталт
+/// https://dart-quicktype.netlify.app/ чи розширення VS Code "JSON to Dart".
+/// `jsonEncode` робить зворотне (об'єкт -> рядок), напр. для кешування.
+library;
 
 import 'dart:convert';
 

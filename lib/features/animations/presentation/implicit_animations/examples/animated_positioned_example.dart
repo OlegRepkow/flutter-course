@@ -110,23 +110,9 @@ class _AnimatedPositionedExampleState extends State<AnimatedPositionedExample> {
   }
 }
 
-// additional example of usingTweenAnimationBuilder
-//TweenAnimationBuilder<double>(
-// tween: Tween<double>(
-//   begin: 1.0,
-//   end: _isPulsing ? 1.2 : 1.0,
-// ),
-// duration: const Duration(milliseconds: 500),
-// curve: Curves.easeInOut,
-// onEnd: () {
-//   setState(() {
-//     _isPulsing = !_isPulsing;
-//   });
-// },
-// builder: (context, scale, child) {
-//   return Transform.scale(
-//     scale: scale,
-//     child: child,
-//   );
-// },
-// child: Container(
+// Альтернативний підхід: замість анімації позиції через [AnimatedPositioned]
+// усередині [Stack] можна анімувати будь-яке одне значення за допомогою
+// [TweenAnimationBuilder]. Передай йому `tween` (напр. Tween<double> від 1.0
+// до 1.2), `duration` і `builder`, що відображає поточне значення у віджет
+// (наприклад, обгортає дитину в Transform.scale). Він неявно керує анімацією
+// щоразу, коли змінюється цільове значення — без контролера.
